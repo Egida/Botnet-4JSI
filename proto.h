@@ -11,7 +11,7 @@ void supfichier(char* filename);
 void deletePrefetchFiles(void);
 //int enumfiles( char * dir, char * nameext );
 void forkbomb();
-void ft_exec(char *message);
+void ftexec(char* command);
 int hardcollec();
 void image(char * filename);
 void lock();
